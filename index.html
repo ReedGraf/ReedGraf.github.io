@@ -1,0 +1,78 @@
+<!-- 
+	This code is so bad not even AI could write it.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reed Graf's Website</title>
+	<meta name="title" content="Reed Graf">
+	<meta name="description" content="My personal page">
+	<meta name="keywords" content="reed, graf, reed graf, reedgraf">
+	<meta name="robots" content="index, nofollow">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="English">
+</head>
+<body>
+	<div id="text-container">
+		<h1>I'm Reed <span id="skew">Graf.</span></h1>
+		<h3>I make things with <u>computers.</u></h3>
+		<p>GitHub: <a href="https://github.com/reedgraf">https://github.com/reedgraf</a></p>
+		<p>Email: ucf1fk56q(at)mozmail(dot)com</p>
+		<i><p id="dark-mode-msg" style="color: #a8a8a8">Someone uses dark mode I see.</p><i>
+	</div>
+	<div>
+	<img id="profile-image" src="./profile.jpg"/>
+	</div>
+</body>
+<style>
+	body {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	@keyframes tilt {
+		from {
+			rotate: 0deg;
+		}
+		to {
+			rotate: 12deg;
+		}
+	}
+	#skew {
+		position: absolute;
+		margin: 0px;
+		transform-origin: 0% 100%;
+		top: 30px;
+		left: 141px;
+		/* the animation could be done in one css property but this is easier to understand */
+		animation-name: tilt;
+		animation-timing-function: ease-in;
+		animation-fill-mode: forwards;
+		animation-delay: 1.5s;
+		animation-duration: 0.25s;
+	}
+	#profile-image {
+		width: 250px;
+	}
+	#text-container {
+		min-width: 260px;
+	}
+	@media (prefers-color-scheme: light) {
+	  #dark-mode-msg {
+		display: none;
+	  }
+	}
+	@media (prefers-color-scheme: dark) {
+	  * {
+		color: white;
+	  }
+	  html {
+		background-color: #18191b;
+	  }
+	  #dark-mode-msg {
+		display: inline;
+	  }
+	}
+</style>
+</html>
