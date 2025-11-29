@@ -1,0 +1,63 @@
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Font Sizes */
+h1 {
+  font-size: 32px;
+}
+h3 {
+  font-size: 18.72px;
+}
+p {
+  font-size: 16px;
+}
+
+@keyframes tilt {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 12deg;
+  }
+}
+#skew {
+  position: absolute;
+  margin: 0px;
+  transform-origin: 0% 100%;
+  top: 30px;
+  left: 141px;
+  /* the animation could be done in one css property but this is easier to understand */
+  animation-name: tilt;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
+  animation-duration: 0.25s;
+}
+
+#profile-image {
+  width: 250px;
+}
+
+#text-container {
+  min-width: 260px;
+}
+
+/* System theme detection */
+@media (prefers-color-scheme: light) {
+  #dark-mode-msg {
+  display: none;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  * {
+  color: white;
+  }
+  html {
+  background-color: #18191b;
+  }
+  #dark-mode-msg {
+  display: inline;
+  }
+}
