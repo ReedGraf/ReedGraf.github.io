@@ -1,11 +1,17 @@
+* {
+  font-family: Georgia, serif;
+}
+
 body {
   display: flex;
   flex-wrap: wrap;
+  gap: 15px;
 }
 
 /* Font Sizes */
 h1 {
   font-size: 32px;
+  font:400;
 }
 h3 {
   font-size: 18.72px;
@@ -19,7 +25,7 @@ p {
     rotate: 0deg;
   }
   to {
-    rotate: 12deg;
+    rotate: 10deg;
   }
 }
 #skew {
@@ -27,7 +33,7 @@ p {
   margin: 0px;
   transform-origin: 0% 100%;
   top: 30px;
-  left: 141px;
+  left: 155px;
   /* the animation could be done in one css property but this is easier to understand */
   animation-name: tilt;
   animation-timing-function: ease-in;
