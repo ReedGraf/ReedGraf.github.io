@@ -11,35 +11,61 @@ body {
 /* Font Sizes */
 h1 {
   font-size: 32px;
-  font:400;
+  font-weight: 700;
 }
 h3 {
   font-size: 18.72px;
+  font-weight: 700;
 }
 p {
   font-size: 16px;
+  font-weight: 400;
 }
 
 @keyframes tilt {
-  from {
+  0% {
     rotate: 0deg;
   }
-  to {
-    rotate: 10deg;
+  15% {
+    rotate:10deg;
+  }
+  30% {
+    rotate:2deg;
+  }
+  45% {
+    rotate:10deg;
+  }
+  55% {
+    rotate:4deg;
+  }
+  65% {
+    rotate:10deg;
+  }
+  75% {
+    rotate:7deg;
+  }
+  85% {
+    rotate:10deg;
+  }
+  90% {
+    rotate:9deg;
+  }
+  100% {
+    rotate:10deg;
   }
 }
 #skew {
   position: absolute;
   margin: 0px;
-  transform-origin: 0% 100%;
-  top: 30px;
-  left: 155px;
+  transform-origin: bottom left;
+  top: 30;
+  margin-left: 5px;
   /* the animation could be done in one css property but this is easier to understand */
   animation-name: tilt;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
   animation-delay: 1.5s;
-  animation-duration: 0.25s;
+  animation-duration: 1s;
 }
 
 #profile-image {
