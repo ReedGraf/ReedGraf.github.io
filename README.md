@@ -7,3 +7,5 @@ Made to be simple, compatable, and classy.
 - Continue writing about section.
 - Add pictures to about section.
 - Create a pictures page
+    - Add pictures
+    - Add small versions for thumbnails
