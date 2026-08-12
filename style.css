@@ -94,3 +94,22 @@ p {
   display: inline;
   }
 }
+
+/* PICS PAGE */
+
+.image-container {
+  height: 300px;
+  /* border: 1px solid red; */
+  
+}
+
+.image-thumb {
+  height: 90%;
+  /* max-width: 400px;
+  max-height: 350px; */
+}
+
+.image-container > p {
+  height: 10%;
+  margin: 0;
+}
