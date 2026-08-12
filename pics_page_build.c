@@ -14,7 +14,7 @@
 int main(void) {
     struct dirent *de;  // Pointer for directory entry
 
-    // opendir() returns a pointer of DIR type. 
+    // opendir() returns a pointer to dir. 
     DIR *dir = opendir("./img/full-res/");
 
     if (dir == NULL) { // opendir returns NULL if couldn't open directory 
@@ -22,41 +22,58 @@ int main(void) {
         return 0;
     }
 
-    const char *currentFile = NULL;
+    const char *pictureFileName = NULL;
 
-    // Create template insertion here
+    FILE *picsFinalFile = fopen("./pics.html", "w");
+    FILE *picsTemplateFile = fopen("./templates/pics-template.html", "r"); 
+
+    printf("Insert template into final file");
+
+    // read template to var
+    char template[512];
+    while (fgets(template, 512, picsTemplateFile)) {
+        fprintf(picsFinalFile, template);
+    }
+    
+    fclose(picsTemplateFile);
 
     while ((de = readdir(dir)) != NULL) {
-        currentFile = de->d_name;
+        pictureFileName = de->d_name;
 
         // skip hidden entries and non-jpg files
-        if (currentFile[0] == '.') {
+        if (pictureFileName[0] == '.') {
             continue;
         }
 
-        size_t len = strlen(currentFile);
-        if (len < 5 || strcmp(currentFile + len - 4, ".jpg") != 0) {
+        size_t len = strlen(pictureFileName);
+        if (len < 5 || strcmp(pictureFileName + len - 4, ".jpg") != 0) {
             continue;
         }
 
         // check if thumbnail exists
-        char fullThumbPath[256];
-
-        snprintf(fullThumbPath, sizeof fullThumbPath, "./img/thumb/%.*s-thumb.jpg", (int)(len - 4), currentFile);
-
-        FILE *file = fopen(fullThumbPath, "r");
+        char thumbnailPath[256];
+        snprintf(thumbnailPath, sizeof thumbnailPath, "./img/thumb/%.*s-thumb.jpg", (int)(len - 4), pictureFileName);
+        FILE *file = fopen(thumbnailPath, "r");
 
         if (file == NULL) {
-            printf("Thumbnail for %s does not exist\n", currentFile);
+            printf("Thumbnail for %s does not exist\n", pictureFileName);
             continue;
         }
 
-        // add image insertion here
+        // insert into HTML output
+        printf("Inserting %s\n", pictureFileName);
+        // i was too lazy to write a way for it to read from a file, so this is what I jankily placed
+        // good luck to future me that wants to redesign my website
+        fprintf(picsFinalFile, "    <a href=\"./img/full-res/%s\"><div class=\"image-container\"><img class=\"image-thumb\" src=\"%s\"/><p>%s</p></div></a>\n",pictureFileName, thumbnailPath, pictureFileName);
 
         fclose(file);
 
     }
-    
+
+    // i also didn't want to have this in the template to figure out.
+    // maybe I'll do these later
+    fprintf(picsFinalFile, "</body>\n</html>");
+
     // clean up
     fclose(picsFinalFile);
     closedir(dir);
