@@ -27,7 +27,7 @@ int main(void) {
     FILE *picsFinalFile = fopen("./pics.html", "w");
     FILE *picsTemplateFile = fopen("./templates/pics-template.html", "r"); 
 
-    printf("Insert template into final file");
+    printf("Insert template into file\n");
 
     // read template to var
     char template[512];
@@ -36,6 +36,9 @@ int main(void) {
     }
     
     fclose(picsTemplateFile);
+
+    // keep track of image count for final output
+    int pictureCount = 0;
 
     while ((de = readdir(dir)) != NULL) {
         pictureFileName = de->d_name;
@@ -65,8 +68,11 @@ int main(void) {
         // i was too lazy to write a way for it to read from a file, so this is what I jankily placed
         // good luck to future me that wants to redesign my website
         fprintf(picsFinalFile, "    <a href=\"./img/full-res/%s\"><div class=\"image-container\"><img class=\"image-thumb\" src=\"%s\"/><p>%s</p></div></a>\n",pictureFileName, thumbnailPath, pictureFileName);
-
+        
         fclose(file);
+
+        // increment
+        pictureCount++;
 
     }
 
@@ -77,6 +83,8 @@ int main(void) {
     // clean up
     fclose(picsFinalFile);
     closedir(dir);
+
+    printf("Fishished adding %d pictures\n", pictureCount);
 
     return 0;
 }
