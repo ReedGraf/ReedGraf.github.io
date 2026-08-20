@@ -105,8 +105,8 @@ p {
 
 .image-thumb {
   height: 90%;
-  /* max-width: 400px;
-  max-height: 350px; */
+  width: 100%; 
+  max-width: 400px;
 }
 
 .image-container > p {
