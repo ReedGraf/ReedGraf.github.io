@@ -4,8 +4,7 @@ Made to be simple, compatable, and classy.
 
 ## ToDo
 
-- Continue writing about section.
-- Add pictures to about section.
+- None right now. I can't think of anything other than adding more pics to my pics page.
 
 
 ## Pics Page Builder
